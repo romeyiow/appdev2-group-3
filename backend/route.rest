@@ -1,0 +1,26 @@
+GET http://localhost:3000/students
+
+###
+
+GET http://localhost:3000/students/20220001
+
+### POST new student
+
+POST http://localhost:3000/students 
+Content-Type: application/json
+
+{
+    "studentId": 202200099,
+    "name": "Roberto Dela Cruz",
+    "programs": "BSIS",
+    "yearLevel": "1st Year"
+}
+
+### PATCH update student
+PATCH http://localhost:3000/students/20220001
+Content-Type: application/json
+
+{
+    "name": "Roberto Dela Cruz"
+}
+
