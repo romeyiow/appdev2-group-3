@@ -1,0 +1,421 @@
+/* Basic Reset / Setup */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+.App {
+  max-width: 900px;
+  /* Slightly wider */
+  margin: 20px auto;
+  background: #fff;
+  padding: 25px 30px;
+  /* More padding */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2,
+h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+h1 {
+  text-align: center;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.6em;
+  margin-bottom: 1.5em;
+}
+
+h2 {
+  border-bottom: 1px solid #ecf0f1;
+  padding-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.15em;
+  color: #34495e;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 40px 0;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #c0392b;
+  background-color: #fdecea;
+  border: 1px solid #e74c3c;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.search-results .error-message {
+  /* More specific error styling */
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+/* Form Styling */
+.form-section {
+  margin-bottom: 30px;
+  padding: 20px 25px;
+  border: 1px solid #e0e0e0;
+  background-color: #fdfdfd;
+  border-radius: 5px;
+}
+
+.form-section div:not(.form-buttons) {
+  /* Exclude button group from flex styling */
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  /* Gap between label and input */
+}
+
+.form-section label {
+  display: inline-block;
+  width: 120px;
+  /* Fixed label width */
+  font-weight: 500;
+  color: #34495e;
+  flex-shrink: 0;
+}
+
+.form-section input[type="text"],
+.form-section input[type="number"] {
+  /* Keep number style just in case */
+  padding: 10px 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  flex-grow: 1;
+  min-width: 200px;
+  /* Ensure decent width */
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-section input[type="text"]:focus,
+.form-section input[type="number"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.form-section input:read-only,
+.form-section input:disabled {
+  background-color: #ecf0f1;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Button Styling */
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  /* Add :not(:disabled) */
+  opacity: 0.85;
+}
+
+button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button.button-delete {
+  background-color: #e74c3c;
+}
+
+button.button-delete:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+button.button-edit {
+  background-color: #f39c12;
+}
+
+button.button-edit:hover:not(:disabled) {
+  background-color: #e67e22;
+}
+
+button.button-clear {
+  background-color: #7f8c8d;
+  /* Grey for clear */
+  padding: 8px 15px;
+  /* Slightly smaller */
+}
+
+button.button-clear:hover:not(:disabled) {
+  background-color: #95a5a6;
+}
+
+
+/* Button groups */
+.button-group {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.form-buttons {
+  margin-top: 10px;
+  margin-left: 130px;
+  /* Align with inputs (label width + gap) */
+}
+
+.list-buttons {
+  flex-shrink: 0;
+}
+
+/* List Styling */
+.list-container {
+  margin-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* Remove default ul margin */
+}
+
+li {
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 12px 18px;
+  border: 1px solid #ecf0f1;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  /* More space between text and buttons */
+}
+
+li .student-details {
+  flex-grow: 1;
+  margin-right: 10px;
+  word-break: break-word;
+  color: #34495e;
+}
+
+li .button-group button {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+/* Pagination */
+.pagination-controls {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+  background-color: #2ecc71;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #27ae60;
+}
+
+.pagination-controls span {
+  font-weight: 600;
+  color: #34495e;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+/* Loading/No Data messages */
+p {
+  text-align: center;
+  color: #7f8c8d;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+.list-container>p {
+  /* Target the "No students match..." message */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* --- Styles for Search Section --- */
+.search-section {
+  margin: 30px 0;
+  padding: 20px 25px;
+  border: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+  /* Lighter background */
+  border-radius: 5px;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.search-input-group label {
+  font-weight: 500;
+  color: #34495e;
+  flex-shrink: 0;
+  width: 100px;
+  /* Consistent label width */
+}
+
+.search-input-group input[type="text"] {
+  padding: 10px 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  flex-grow: 1;
+  min-width: 150px;
+  box-sizing: border-box;
+}
+
+.search-input-group input[type="text"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.search-input-group button {
+  background-color: #16a085;
+  padding: 10px 18px;
+  /* Match other main buttons */
+}
+
+.search-input-group button:hover:not(:disabled) {
+  background-color: #1abc9c;
+}
+
+
+.search-results {
+  margin-top: 15px;
+  min-height: 50px;
+}
+
+.student-card {
+  background-color: #e9ecef;
+  /* Match filter bg */
+  border: 1px solid #dee2e6;
+  /* Match filter border */
+  padding: 18px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.student-card h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+  border-bottom: 1px solid #ced4da;
+  padding-bottom: 8px;
+}
+
+.student-card p {
+  margin: 8px 0;
+  /* More spacing */
+  color: #34495e;
+  text-align: left;
+  font-style: normal;
+}
+
+.student-card p strong {
+  display: inline-block;
+  width: 100px;
+  /* Align keys */
+  font-weight: 600;
+  color: #495057;
+}
+
+/* --- Styles for Filter Section --- */
+.filter-section {
+  margin-bottom: 30px;
+  padding: 20px 25px;
+  background-color: #e9ecef;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+.filter-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #495057;
+  font-size: 1.1em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #ced4da;
+}
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  /* More space between filter groups */
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: #343a40;
+  flex-shrink: 0;
+}
+
+.filter-group input[type="text"],
+.filter-group select {
+  padding: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  min-width: 160px;
+  /* Slightly wider filters */
+  font-size: 14px;
+  /* Ensure consistent font size */
+  background-color: #fff;
+  /* White background for inputs */
+}
+
+.filter-group input[type="text"]:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
